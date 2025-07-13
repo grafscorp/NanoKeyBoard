@@ -30,6 +30,9 @@ enum ButtonDefault : uint8_t{
     NEXT_MEDIA,
     CUSTOM_ACTION
 };
+    constexpr uint8_t DebounceThreshold=2;
+    constexpr uint8_t DebounceIntervalMs=2;
+    constexpr uint8_t LongPressDuration=1000;
 }
 
 
