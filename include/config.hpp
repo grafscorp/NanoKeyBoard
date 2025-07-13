@@ -14,6 +14,7 @@ constexpr uint8_t OLED_ADDRESS = 0x3C;
 
 //SERIAL PORT
 constexpr uint32_t SERIAL_BAUD_RATE = 115200;
+constexpr uint16_t SERIAL_TIMEOUT_MS = 100;
 }
 
 
