@@ -85,6 +85,10 @@ namespace ProtocolConfig {
         ErrorReport = 0x83         // Отчет об ошибке
     };
     
+    // Флаги пакета
+    constexpr uint8_t FlagAckRequired = 0x01;
+    constexpr uint8_t FlagError = 0x80;
+    
 }
 
 #endif
