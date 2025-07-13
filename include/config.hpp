@@ -62,6 +62,29 @@ namespace DisplayConfig{
         SystemInfo
     };
 }
+namespace ProtocolConfig {
+    // Структура пакета
+    constexpr uint8_t PacketStartMarker = 0xAA;
+    constexpr uint8_t PacketEndMarker = 0x55;
+    constexpr uint8_t MaxPacketSize = 64;
+    constexpr uint8_t HeaderSize = 4; // [Start][Command][Length][Flags]
+    
+    // Команды
+    enum class Command : uint8_t {
+        // Входящие команды (PC -> Arduino)
+        SetButtonAction = 0x10,   // Установить действие кнопки
+        SetDisplayText = 0x11,    // Установить текст дисплея
+        SaveConfig = 0x12,         // Сохранить конфигурацию
+        ResetDevice = 0x13,        // Сбросить устройство
+        GetStatus = 0x14,          // Запрос статуса
+        
+        // Исходящие команды (Arduino -> PC)
+        ButtonEvent = 0x80,        // Событие кнопки
+        DisplayState = 0x81,       // Состояние дисплея
+        ConfigAck = 0x82,          // Подтверждение конфигурации
+        ErrorReport = 0x83         // Отчет об ошибке
+    };
+    
 }
 
 #endif
