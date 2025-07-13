@@ -41,5 +41,21 @@ enum ButtonDefault : uint8_t{
     constexpr uint8_t LongPressDuration=1000;
 }
 
+namespace DisplayConfig{
+    // Система сообщений
+    constexpr uint8_t MaxMessageQueueSize = 5;    // Размер очереди сообщений
+    constexpr uint16_t DefaultMessageDuration = 2000; // Время показа сообщения (мс)
+    constexpr uint16_t ScrollAnimationDelay = 30;  // Задержка анимации (мс)
+    
+    // Энергосбережение
+    constexpr uint16_t ScreenTimeout = 30000;      // Таймаут отключения экрана (мс)
+    constexpr uint8_t DimmingBrightness = 16;      // Яркость в режиме энергосбережения
+    
+    // Шрифты
+    constexpr uint8_t TitleFontSize = 2;
+    constexpr uint8_t BodyFontSize = 1;
+    
+    // Стандартные экраны
+}
 
 #endif
