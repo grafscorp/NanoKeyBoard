@@ -89,6 +89,14 @@ namespace ProtocolConfig {
     constexpr uint8_t FlagAckRequired = 0x01;
     constexpr uint8_t FlagError = 0x80;
     
+    // Коды ошибок
+    enum class ErrorCode : uint8_t {
+        InvalidCommand = 0x01,
+        ChecksumMismatch = 0x02,
+        PacketTooLong = 0x03,
+        InvalidButtonId = 0x10,
+        InvalidActionId = 0x11
+    };
 }
 
 #endif
