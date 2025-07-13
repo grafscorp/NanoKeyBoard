@@ -30,7 +30,6 @@
 *.exe
 *.out
 *.app
-/.pio
-/.pio
-.pio/build/nanoatmega328/idedata.json
-/.vscode
+/.pio/*
+
+/.vscode/*
