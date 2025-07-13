@@ -56,6 +56,12 @@ namespace DisplayConfig{
     constexpr uint8_t BodyFontSize = 1;
     
     // Стандартные экраны
+    enum class DefaultScreen {
+        MainStatus,
+        ButtonAssignment,
+        SystemInfo
+    };
+}
 }
 
 #endif
