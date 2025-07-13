@@ -15,4 +15,22 @@ constexpr uint8_t OLED_ADDRESS = 0x3C;
 //SERIAL PORT
 constexpr uint32_t SERIAL_BAUD_RATE = 115200;
 }
+
+
+
+
+namespace ButtonsCondif{
+//Buttons
+constexpr uint8_t BUTTONS_SIZE = 4;
+
+//Buttons actions
+enum ButtonDefault : uint8_t{
+    TOGGLE_PLAY =1,
+    PREV_MEDIA,
+    NEXT_MEDIA,
+    CUSTOM_ACTION
+};
+}
+
+
 #endif
