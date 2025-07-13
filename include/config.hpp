@@ -19,7 +19,7 @@ constexpr uint32_t SERIAL_BAUD_RATE = 115200;
 
 
 
-namespace ButtonsCondif{
+namespace ButtonsConfig{
 //Buttons
 constexpr uint8_t BUTTONS_SIZE = 4;
 
