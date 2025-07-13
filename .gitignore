@@ -33,3 +33,6 @@
 /.pio/*
 
 /.vscode/*
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.pio/build/nanoatmega328/idedata.json
