@@ -97,6 +97,10 @@ namespace ProtocolConfig {
         InvalidButtonId = 0x10,
         InvalidActionId = 0x11
     };
+    
+    // Таймауты
+    constexpr uint16_t ResponseTimeout = 500; // мс
+    constexpr uint16_t AckTimeout = 200;      // мс
 }
 
 #endif
