@@ -95,6 +95,9 @@ private:
     // Raw pin states storage
     uint8_t rawStates[ButtonsConfig::BUTTONS_SIZE];
     uint32_t lastPollTime;
+
+    friend class SerialProtocol;
+    
 };
 
 
