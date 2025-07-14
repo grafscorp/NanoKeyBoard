@@ -67,7 +67,26 @@ public:
     //  */
     // uint8_t getButtonAction(uint8_t buttonId) const;
 
+    /**
+     * @brief Set action for specified button
+     * @param buttonId Physical button ID (1-based)
+     * @param actionId Action ID to assign
+     */
+    void setButtonAction(uint8_t buttonId, uint8_t actionId);
+    /**
+     * @brief Get current action for button
+     * @param buttonId Physical button ID (1-based)
+     * @return Current action ID
+     */
+    uint8_t getButtonAction(uint8_t buttonId) const;
+
+    /**
+     * @brief Execute action for button
+     * @param buttonId Physical button ID (1-based)
+     */
+    void executeButtonAction(uint8_t buttonId);
 private:
+    uint8_t buttonActions[ButtonsConfig::BUTTONS_SIZE];
     /**
      * @struct ButtonContext
      * @brief Per-button tracking context
