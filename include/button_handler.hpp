@@ -18,6 +18,11 @@
 class ButtonHandler
 {
 public:
+
+    /**
+    @enum ButtonState
+    @brief Represents physical button states
+     */
     enum class ButtonState{
         Idle,       // Button not pressed
         Pressed,    // Button pressed (debounced)
