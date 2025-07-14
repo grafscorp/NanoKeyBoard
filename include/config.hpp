@@ -15,10 +15,22 @@ constexpr uint8_t OLED_ADDRESS = 0x3C;
 //SERIAL PORT
 constexpr uint32_t SERIAL_BAUD_RATE = 115200;
 constexpr uint16_t SERIAL_TIMEOUT_MS = 100;
+
+//Potenciometer
+constexpr uint8_t VolumePotPin = A0;         // Аналоговый пин
+constexpr uint16_t VolumeReadInterval = 50;  // Интервал чтения (мс)
+constexpr uint8_t VolumeChangeThreshold = 3; // Порог изменения (%)
+
 }
 
 
-
+namespace VolumeConfig {
+    // Команды громкости
+    enum class VolumeCommand : uint8_t {
+        SetVolume = 0x20,
+        MuteToggle = 0x21
+    };
+}
 
 namespace ButtonsConfig{
 //Buttons size
