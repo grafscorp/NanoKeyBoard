@@ -60,6 +60,13 @@ public:
      * @return ButtonEvent structure
      */
     ButtonEvent getEvent();
+    // /**
+    //  * @brief Get action ID for specified button
+    //  * @param buttonId Physical button ID (1-based)
+    //  * @return Action ID
+    //  */
+    // uint8_t getButtonAction(uint8_t buttonId) const;
+
 private:
     /**
      * @struct ButtonContext
