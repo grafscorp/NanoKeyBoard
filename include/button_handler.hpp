@@ -23,11 +23,12 @@ public:
     @enum ButtonState
     @brief Represents physical button states
      */
-    enum class ButtonState{
+    enum ButtonState{
         Idle,       // Button not pressed
         Pressed,    // Button pressed (debounced)
         Held,       // Button held for extended period
-        Released    // Button released
+        Released,    // Button released
+        MuteToggle  // Mute 
     };
 
     /**
