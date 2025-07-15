@@ -130,37 +130,46 @@ void handleConfigurationPersistence() {
             systemConfig.buttonActions[i] = buttonHandler.getButtonAction(i + 1);
         }
         systemConfig.displayBrightness = displayManager.getCurrentBrightness();
-        systemConfig.sleepTimeout = DisplayConfig::ScreenTimeout;
-        EEPROMManager::save(systemConfig);
-        lastSaveTime = currentTime;
-    }
-}
+// void handleConfigurationPersistence() {
+//     static uint32_t lastSaveTime = 0;
+//     const uint32_t currentTime = millis();
+//     if (currentTime - lastSaveTime > 300000) {
+//         for (uint8_t i = 0; i < ButtonsConfig::BUTTONS_SIZE; i++) {
+//             systemConfig.buttonActions[i] = buttonHandler.getButtonAction(i + 1);
+//         }
+//         systemConfig.displayBrightness = displayManager.getCurrentBrightness();
+//         systemConfig.sleepTimeout = DisplayConfig::ScreenTimeout;
+//         EEPROMManager::save(systemConfig);
+//         lastSaveTime = currentTime;
+//     }
+// }
 
-void setup() {
-    pinMode(LED_BUILTIN, OUTPUT);
-    Serial.begin(HardwareConfig::SERIAL_BAUD_RATE);
-    Serial.println("System: Starting...");
-    initializePeripherals();
-    SystemState::updateActivity();
-    Serial.println("System: Initialized");
-}
+// void setup() {
+//     pinMode(LED_BUILTIN, OUTPUT);
+//     Serial.begin(HardwareConfig::SERIAL_BAUD_RATE);
+//     Serial.println("System: Starting...");
+//     initializePeripherals();
+//     SystemState::updateActivity();
+//     Serial.println("System: Initialized");
+// }
 
-void loop() {
-    buttonHandler.update();
-    handleButtonEvents();
-    volumeControl.update();
-    displayManager.update();
-    serialProtocol.update();
-    handleSystemStates();
-    handleConfigurationPersistence();
+// void loop() {
+//     buttonHandler.update();
+//     handleButtonEvents();
+//     volumeControl.update();
+//     displayManager.update();
+//     serialProtocol.update();
+//     handleSystemStates();
+//     handleConfigurationPersistence();
     
-    if (SystemState::isState(SystemState::NormalOperation)) {
-        static uint32_t lastBlink = 0;
-        if (millis() - lastBlink > 1000) {
-            digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
-            lastBlink = millis();
-        }
-    }
+//     if (SystemState::isState(SystemState::NormalOperation)) {
+//         static uint32_t lastBlink = 0;
+//         if (millis() - lastBlink > 1000) {
+//             digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+//             lastBlink = millis();
+//         }
+//     }
     
-    delay(10);
-}
+//     delay(10);
+// }
+
