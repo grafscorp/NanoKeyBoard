@@ -37,12 +37,54 @@ void applyConfiguration() {
 void initializePeripherals() {
     SystemState::initialize();
     bool configValid = initializeConfiguration();
+
+
+
+
+
+// #include <Arduino.h>
+// #include "button_handler.hpp"
+// #include "display_manager.hpp"
+// #include "serial_protocol.hpp"
+// #include "eeprom_manager.hpp"
+// #include "system_state.hpp"
+// #include "volume_control.hpp"
+
+// ButtonHandler buttonHandler;
+// DisplayManager displayManager;
+// SerialProtocol serialProtocol(buttonHandler, displayManager);
+// VolumeControl volumeControl(serialProtocol);
+// EEPROMManager::SystemConfig systemConfig;
+
+// bool initializeConfiguration() {
+//     EEPROMManager::initialize();
+//     if (!EEPROMManager::load(systemConfig)) {
+//         for (uint8_t i = 0; i < ButtonsConfig::BUTTONS_SIZE; i++) {
+//             systemConfig.buttonActions[i] = static_cast<uint8_t>(
+//                 static_cast<ButtonsConfig::ButtonDefault>(i + 1));
+//         }
+//         systemConfig.displayBrightness = 255;
+//         systemConfig.sleepTimeout = DisplayConfig::ScreenTimeout;
+//         EEPROMManager::save(systemConfig);
+//         return false;
+//     }
+//     return true;
+// }
+
+// void applyConfiguration() {
+//     for (uint8_t i = 0; i < ButtonsConfig::BUTTONS_SIZE; i++) {
+//         buttonHandler.setButtonAction(i + 1, systemConfig.buttonActions[i]);
+//     }
+//     displayManager.setBrightness(systemConfig.displayBrightness);
+// }
+
+// void initializePeripherals() {
+//     SystemState::initialize();
+//     bool configValid = initializeConfiguration();
     
-    buttonHandler.init();
-    volumeControl.initialize();
+//     buttonHandler.init();
+//     volumeControl.initialize();
     
-    if (!displayManager.init()) {
-        SystemState::setState(SystemState::ErrorState);
 //     if (!displayManager.init()) {
 //         SystemState::setState(SystemState::ErrorState);
 //         serialProtocol.sendSystemError(1);
