@@ -43,42 +43,40 @@ void initializePeripherals() {
     
     if (!displayManager.init()) {
         SystemState::setState(SystemState::ErrorState);
-        serialProtocol.sendSystemError(1);
-    } else {
-        applyConfiguration();
-    }
+//     if (!displayManager.init()) {
+//         SystemState::setState(SystemState::ErrorState);
+//         serialProtocol.sendSystemError(1);
+//     } else {
+//         applyConfiguration();
+//     }
     
-    serialProtocol.init();
+//     serialProtocol.init();
     
-    if (SystemState::getCurrentState() != SystemState::ErrorState) {
-        if (!configValid) {
-            displayManager.showMessage("System Ready", "Default Config", 3000, 10);
-        } else {
-            displayManager.showMessage("System Ready", "v1.0", 2000, 10);
-        }
-    }
-}
+//     if (SystemState::getCurrentState() != SystemState::ErrorState) {
+//         if (!configValid) {
+//             displayManager.showMessage("System Ready", "Default Config", 3000, 10);
+//         } else {
+//             displayManager.showMessage("System Ready", "v1.0", 2000, 10);
+//         }
+//     }
+// }
 
-void handleButtonEvents() {
-    if (!buttonHandler.hasEvent()) return;
+// void handleButtonEvents() {
+//     if (!buttonHandler.hasEvent()) return;
     
-    auto event = buttonHandler.getEvent();
-    SystemState::updateActivity();
+//     auto event = buttonHandler.getEvent();
+//     SystemState::updateActivity();
     
-    if (SystemState::isState(SystemState::SleepMode)) {
-        SystemState::setState(SystemState::NormalOperation);
-        displayManager.wakeUp();
-        return;
-    }
+//     if (SystemState::isState(SystemState::SleepMode)) {
+//         SystemState::setState(SystemState::NormalOperation);
+//         displayManager.wakeUp();
+//         return;
+//     }
     
-    if (event.state == ButtonHandler::Pressed) {
-        buttonHandler.executeButtonAction(event.buttonID);
-    }
+//     if (event.state == ButtonHandler::Pressed) {
+//         buttonHandler.executeButtonAction(event.buttonID);
+//     }
     
-    serialProtocol.sendButtonEvent(
-        event.buttonID,
-        static_cast<uint8_t>(event.state),
-        event.duration
 //     serialProtocol.sendButtonEvent(
 //         event.buttonID,
 //         static_cast<uint8_t>(event.state),
