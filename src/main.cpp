@@ -79,38 +79,42 @@ void handleButtonEvents() {
         event.buttonID,
         static_cast<uint8_t>(event.state),
         event.duration
-    );
+//     serialProtocol.sendButtonEvent(
+//         event.buttonID,
+//         static_cast<uint8_t>(event.state),
+//         event.duration
+//     );
     
-    if (event.state == ButtonHandler::Pressed) {
-        displayManager.showMessage(
-            "Btn " + String(event.buttonID),
-            "Pressed",
-            500,
-            5
-        );
-    } else if (event.state == ButtonHandler::Held) {
-        displayManager.showMessage(
-            "Btn " + String(event.buttonID),
-            "Long press",
-            1000,
-            5
-        );
-    }
-}
+//     if (event.state == ButtonHandler::Pressed) {
+//         displayManager.showMessage(
+//             "Btn " + String(event.buttonID),
+//             "Pressed",
+//             500,
+//             5
+//         );
+//     } else if (event.state == ButtonHandler::Held) {
+//         displayManager.showMessage(
+//             "Btn " + String(event.buttonID),
+//             "Long press",
+//             1000,
+//             5
+//         );
+//     }
+// }
 
-void handleSystemStates() {
-    static uint32_t lastStateCheck = 0;
-    const uint32_t currentTime = millis();
-    if (currentTime - lastStateCheck < 1000) return;
-    lastStateCheck = currentTime;
+// void handleSystemStates() {
+//     static uint32_t lastStateCheck = 0;
+//     const uint32_t currentTime = millis();
+//     if (currentTime - lastStateCheck < 1000) return;
+//     lastStateCheck = currentTime;
     
-    switch (SystemState::getCurrentState()) {
-        case SystemState::NormalOperation:
-            if (SystemState::getInactiveTime() > systemConfig.sleepTimeout) {
-                SystemState::setState(SystemState::SleepMode);
-                displayManager.showMessage("Sleep Mode", "Activated", 2000, 10);
-            }
-            break;
+//     switch (SystemState::getCurrentState()) {
+//         case SystemState::NormalOperation:
+//             if (SystemState::getInactiveTime() > systemConfig.sleepTimeout) {
+//                 SystemState::setState(SystemState::SleepMode);
+//                 displayManager.showMessage("Sleep Mode", "Activated", 2000, 10);
+//             }
+//             break;
             
 //         case SystemState::SleepMode:
 //             displayManager.dimDM(true);
