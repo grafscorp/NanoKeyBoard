@@ -112,24 +112,16 @@ void handleSystemStates() {
             }
             break;
             
-        case SystemState::SleepMode:
-            displayManager.dimDM(true);
-            break;
+//         case SystemState::SleepMode:
+//             displayManager.dimDM(true);
+//             break;
             
-        case SystemState::ErrorState:
-            digitalWrite(LED_BUILTIN, millis() % 1000 < 500);
-            break;
-    }
-}
+//         case SystemState::ErrorState:
+//             digitalWrite(LED_BUILTIN, millis() % 1000 < 500);
+//             break;
+//     }
+// }
 
-void handleConfigurationPersistence() {
-    static uint32_t lastSaveTime = 0;
-    const uint32_t currentTime = millis();
-    if (currentTime - lastSaveTime > 300000) {
-        for (uint8_t i = 0; i < ButtonsConfig::BUTTONS_SIZE; i++) {
-            systemConfig.buttonActions[i] = buttonHandler.getButtonAction(i + 1);
-        }
-        systemConfig.displayBrightness = displayManager.getCurrentBrightness();
 // void handleConfigurationPersistence() {
 //     static uint32_t lastSaveTime = 0;
 //     const uint32_t currentTime = millis();
