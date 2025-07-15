@@ -1,42 +1,59 @@
 #include <Arduino.h>
-#include "button_handler.hpp"
-#include "display_manager.hpp"
-#include "serial_protocol.hpp"
-#include "eeprom_manager.hpp"
-#include "system_state.hpp"
-#include "volume_control.hpp"
 
-ButtonHandler buttonHandler;
-DisplayManager displayManager;
-SerialProtocol serialProtocol(buttonHandler, displayManager);
-VolumeControl volumeControl(serialProtocol);
-EEPROMManager::SystemConfig systemConfig;
 
-bool initializeConfiguration() {
-    EEPROMManager::initialize();
-    if (!EEPROMManager::load(systemConfig)) {
-        for (uint8_t i = 0; i < ButtonsConfig::BUTTONS_SIZE; i++) {
-            systemConfig.buttonActions[i] = static_cast<uint8_t>(
-                static_cast<ButtonsConfig::ButtonDefault>(i + 1));
-        }
-        systemConfig.displayBrightness = 255;
-        systemConfig.sleepTimeout = DisplayConfig::ScreenTimeout;
-        EEPROMManager::save(systemConfig);
-        return false;
-    }
-    return true;
+constexpr uint8_t button_pin= 5;
+void setup()
+{
+    Serial.begin(9600);
+    pinMode(button_pin, OUTPUT);
 }
 
-void applyConfiguration() {
-    for (uint8_t i = 0; i < ButtonsConfig::BUTTONS_SIZE; i++) {
-        buttonHandler.setButtonAction(i + 1, systemConfig.buttonActions[i]);
-    }
-    displayManager.setBrightness(systemConfig.displayBrightness);
+void loop()
+{
+    digitalWrite(button_pin, HIGH);
+    delay(1000);
+    digitalWrite(button_pin, LOW);
+    delay(1000);
 }
 
-void initializePeripherals() {
-    SystemState::initialize();
-    bool configValid = initializeConfiguration();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
