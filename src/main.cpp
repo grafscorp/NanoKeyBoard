@@ -1,32 +1,12 @@
 #include <Arduino.h>
-#include <Wire.h>
+
 
 void setup() {
-  Wire.begin();
-  Serial.begin(9600);
-  while (!Serial); // для Leonardo/Nano Every
-  Serial.println("Поиск I2C устройств...");
+
 }
 
 void loop() {
-  byte error, address;
-  int nDevices = 0;
 
-  for (address = 1; address < 127; address++) {
-    Wire.beginTransmission(address);
-    error = Wire.endTransmission();
-
-    if (error == 0) {
-      Serial.print("Устройство найдено по адресу 0x");
-      Serial.println(address, HEX);
-      nDevices++;
-    }
-  }
-
-  if (nDevices == 0)
-    Serial.println("Ничего не найдено :(");
-
-  delay(2000);
 }
 
 
