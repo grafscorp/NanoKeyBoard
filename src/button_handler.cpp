@@ -1,18 +1,37 @@
 #include "button_handler.hpp"
 
-ButtonHandler::ButtonHandler() {}
+ButtonHandler::ButtonHandler() {
+    //Ставим данные кнопок в положенние Released - не нажаты
+    for (auto& buttonPressed : buttonsPressed)
+    {
+        buttonPressed = false;
+    }
+     
 
 
-void ButtonHandler::init()
+}
+
+
+void ButtonHandler::init(const bool initPullUp)
 {
     for (auto buttonPin : ButtonsConfig::BUTTON_PINS)
     {
-        pinMode(buttonPin, INPUT_PULLUP);
+        pinMode(buttonPin, initPullUp?INPUT_PULLUP:INPUT );
     }
     
 }
 
 void ButtonHandler::update()
 {
+    for (uint8_t i = 0; i < ButtonsConfig::BUTTONS_COUNT; i++)
+    {
+        //Записываем состояние кнопки, так как по умолчанию стоит подтягивающий резистор, значение true с кнопки означает что она не нажата
+        buttonsPressed[i] = !(static_cast<bool>(digitalRead(ButtonsConfig::BUTTON_PINS[i])));
+    }
+    
+    
+}
 
+void ButtonHandler::getButtonsStateData() {
+    uint64_t data =0xff10101030AAa;
 }
