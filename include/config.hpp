@@ -20,6 +20,8 @@ namespace ButtonsConfig{
     //constexpr uint8_t BUTTON_PINS[] = {2,3,4,5};
     constexpr uint8_t BUTTONS_COUNT = sizeof(HardwareConfig::BUTTON_PINS);
 
+    //Debounce Delay for Cherry MX
+    constexpr const unsigned long DebounceDelay = 20;
 }
 
 
