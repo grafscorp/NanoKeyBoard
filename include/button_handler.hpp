@@ -4,7 +4,6 @@
 #include <Arduino.h>
 #include "config.hpp"
 
-
 #define POLLUP_INIT true
 #define WITHOUT_PULLUPINIT false
 
@@ -33,6 +32,7 @@ private:
     uint8_t buttonData = 0U;
 // //Данные: Нажата кнопка(true) или нет (false)
 //     bool buttonsPressed[ButtonsConfig::BUTTONS_COUNT];
+
 };
 
 
