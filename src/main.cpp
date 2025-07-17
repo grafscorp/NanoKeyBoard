@@ -1,12 +1,17 @@
 #include <Arduino.h>
+#include "button_handler.hpp"
 
+ButtonHandler buttonHandler;
 
 void setup() {
-
+    Serial.begin(9600);
+    buttonHandler.init();
 }
 
 void loop() {
-
+    buttonHandler.update();
+    Serial.println(buttonHandler.getButtonsStateData());
+    delay(10);
 }
 
 
