@@ -25,7 +25,7 @@ namespace HardwareConfig{
 
 
 namespace ButtonsConfig{
-    constexpr uint8_t BUTTON_PINS[] = {2,3,4,5};
+    //constexpr uint8_t BUTTON_PINS[] = {2,3,4,5};
     constexpr uint8_t BUTTONS_COUNT = sizeof(BUTTON_PINS);
 }
 

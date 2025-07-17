@@ -15,6 +15,7 @@ ButtonHandler::ButtonHandler() {
 void ButtonHandler::init(const bool initPullUp)
 {
     for (auto buttonPin : ButtonsConfig::BUTTON_PINS)
+    for (auto buttonPin : HardwareConfig::BUTTON_PINS)
     {
         pinMode(buttonPin, initPullUp?INPUT_PULLUP:INPUT );
     }
