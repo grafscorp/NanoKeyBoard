@@ -26,9 +26,8 @@ public:
     /// @brief 
     void update();
 
-   const uint8_t getSerialData()const  override;
-
-
+    const uint8_t getSerialData()const  override;
+    const uint8_t getSerialCommand() const override;
 private:
 /*Данные о кнопках (нажата - 1, не нажата 0)
 Пример: 1010 - первая и треться кнопка не нажаты, вторая и четвертая нажаты.

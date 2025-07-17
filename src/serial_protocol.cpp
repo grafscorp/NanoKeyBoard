@@ -1,4 +1,6 @@
+
 #include "comm/serial_protocol.hpp"
+
 
 SerialProtocol::SerialProtocol() {
     
@@ -14,6 +16,12 @@ void SerialProtocol::update()
 
 }
 
+void SerialProtocol::sendData(const ISerialDataSource &source)
+{
+
+    sendPacket(source.getSerialCommand(), source.getSerialData());
+}
+
 void SerialProtocol::sendPacket(const uint8_t cmd, const uint8_t data) {
     uint8_t packet[ProtocolConfig::PACKET_SIZE];
     packet[0] = ProtocolConfig::START_BYTE;
@@ -27,6 +35,7 @@ void SerialProtocol::sendPacket(const uint8_t cmd, const uint8_t data) {
 
     Serial.write(packet, ProtocolConfig::PACKET_SIZE);
 }
+
 
 uint8_t SerialProtocol::crc8(const uint8_t *data, size_t len)
 {

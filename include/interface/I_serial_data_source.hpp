@@ -6,8 +6,11 @@
 class ISerialDataSource
 {
 public:
-    virtual const uint8_t getSerialData() const = 0;
     virtual  ~ISerialDataSource() = default;
+protected:
+    virtual const uint8_t getSerialData() const = 0;
+    virtual const uint8_t getSerialCommand() const = 0;
+    friend class SerialProtocol;
 };
 
 

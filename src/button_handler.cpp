@@ -36,6 +36,13 @@ void ButtonHandler::update()
 }
 
 uint8_t ButtonHandler::getSerialData()
+const uint8_t ButtonHandler::getSerialData() const
 {
-    return buttonData;
+    return buttonsData;
+}
+
+const uint8_t ButtonHandler::getSerialCommand() const
+{
+    return ProtocolConfig::CMD_BUTTONS;
+}
 }
