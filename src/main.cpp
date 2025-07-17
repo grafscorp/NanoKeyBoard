@@ -1,16 +1,24 @@
 #include <Arduino.h>
 #include "input/button_handler.hpp"
+#include "comm/serial_protocol.hpp"
 
 ButtonHandler buttonHandler;
+SerialProtocol serial;
 
 void setup() {
     Serial.begin(SerialConfig::SERIAL_BAUD_RATE);
     buttonHandler.init();
+    serial.init();
 }
 
 void loop() {
     buttonHandler.update();
-    Serial.println(buttonHandler.getButtonsStateData());
+    serial.update();
+    if(buttonHandler.hasChanged())
+    {
+        serial.sendData(buttonHandler);
+        buttonHandler.setChanged();
+    }
     delay(10);
 }
 
