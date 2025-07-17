@@ -24,11 +24,15 @@ public:
     /// @brief 
     void update();
 
-    void getButtonsStateData();
+    uint8_t getButtonsStateData();
 
 private:
-//Данные: Нажата кнопка(true) или нет (false)
-    bool buttonsPressed[ButtonsConfig::BUTTONS_COUNT];
+/*Данные о кнопках (нажата - 1, не нажата 0)
+Пример: 1010 - первая и треться кнопка не нажаты, вторая и четвертая нажаты.
+*/
+    uint8_t buttonData = 0U;
+// //Данные: Нажата кнопка(true) или нет (false)
+//     bool buttonsPressed[ButtonsConfig::BUTTONS_COUNT];
 };
 
 

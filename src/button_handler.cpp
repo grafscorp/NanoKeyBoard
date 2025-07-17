@@ -33,6 +33,6 @@ void ButtonHandler::update()
     
 }
 
-void ButtonHandler::getButtonsStateData() {
-    uint64_t data =0xff10101030AAa;
+uint8_t ButtonHandler::getButtonsStateData() {
+    return buttonData;
 }
