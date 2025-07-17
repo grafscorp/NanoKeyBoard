@@ -4,7 +4,7 @@
 ButtonHandler buttonHandler;
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(SerialConfig::SERIAL_BAUD_RATE);
     buttonHandler.init();
 }
 
