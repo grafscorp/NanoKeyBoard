@@ -2,10 +2,7 @@
 
 ButtonHandler::ButtonHandler() {
     //Ставим данные кнопок в положенние Released - не нажаты
-    for (auto& buttonPressed : buttonsPressed)
-    {
-        buttonPressed = false;
-    }
+    
      
 
 
