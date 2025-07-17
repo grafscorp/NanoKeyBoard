@@ -3,9 +3,11 @@
 
 #include <Arduino.h>
 #include "config.hpp"
+#include "debounced_button.hpp"
 
 #define POLLUP_INIT true
 #define WITHOUT_PULLUPINIT false
+
 
 /// @brief 
 class ButtonHandler
@@ -30,9 +32,10 @@ private:
 Пример: 1010 - первая и треться кнопка не нажаты, вторая и четвертая нажаты.
 */
     uint8_t buttonData = 0U;
-// //Данные: Нажата кнопка(true) или нет (false)
-//     bool buttonsPressed[ButtonsConfig::BUTTONS_COUNT];
 
+    DebouncedButton buttons[ButtonsConfig::BUTTONS_COUNT];
+
+//     
 };
 
 
