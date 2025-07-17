@@ -1,6 +1,8 @@
 #include "input/button_handler.hpp"
 
 
+
+
 ButtonHandler::ButtonHandler() {
 
 }
@@ -23,19 +25,22 @@ void ButtonHandler::init(const bool initPullUp)
 void ButtonHandler::update()
 {
 
-    this->buttonData = 0U;
+    
 
     for (int i = ButtonsConfig::BUTTONS_COUNT-1; i >=0; --i)
     {
         buttons[i].update();
 
-        buttonData <<= 1U;
-        buttonData |= ( static_cast<uint8_t>(buttons[i].isHeld()) & 1U);
+        if(buttons[i].isPressed() || buttons[i].isReleased()) 
+        {
+            isChanged = true;
+        }
+        
     }
+    if(isChanged) updateData();
    
 }
 
-uint8_t ButtonHandler::getSerialData()
 const uint8_t ButtonHandler::getSerialData() const
 {
     return buttonsData;
@@ -45,4 +50,21 @@ const uint8_t ButtonHandler::getSerialCommand() const
 {
     return ProtocolConfig::CMD_BUTTONS;
 }
+
+bool ButtonHandler::hasChanged()
+{
+    return this->isChanged;
+}
+
+void ButtonHandler::setChanged(const bool newState) {
+    isChanged = newState;
+}
+void ButtonHandler::updateData() {
+    this->buttonsData = 0U;
+    for (auto& button : buttons)
+    {
+        buttonsData <<= 1U;
+        buttonsData |= ( static_cast<uint8_t>(button.isHeld()) & 1U);
+    }
+    
 }

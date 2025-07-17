@@ -28,14 +28,18 @@ public:
 
     const uint8_t getSerialData()const  override;
     const uint8_t getSerialCommand() const override;
+    bool hasChanged();
+    void setChanged(const bool = false);
 private:
 /*Данные о кнопках (нажата - 1, не нажата 0)
 Пример: 1010 - первая и треться кнопка не нажаты, вторая и четвертая нажаты.
 */
-    uint8_t buttonData = 0U;
+    uint8_t buttonsData = 0U;
 
     DebouncedButton buttons[ButtonsConfig::BUTTONS_COUNT];
 
+    bool isChanged = false;
+    void updateData();
 //     
 };
 
