@@ -6,7 +6,7 @@
 class ISerialDataSource
 {
 public:
-    virtual uint8_t getSerialData() = 0;
+    virtual const uint8_t getSerialData() const = 0;
     virtual  ~ISerialDataSource() = default;
 };
 

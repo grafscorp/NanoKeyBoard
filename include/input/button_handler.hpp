@@ -26,7 +26,7 @@ public:
     /// @brief 
     void update();
 
-    uint8_t getSerialData() override;
+   const uint8_t getSerialData()const  override;
 
 
 private:
