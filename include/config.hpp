@@ -23,6 +23,14 @@ namespace ButtonsConfig{
 
 
 
+namespace SerialConfig{
+    //SERIAL PORT
+    constexpr uint32_t SERIAL_BAUD_RATE = 115200;
+    constexpr uint16_t SERIAL_TIMEOUT_MS = 100;
+
+    
+}
+
 namespace DisplayConfig{
     //OLED DISPLAY CONFIGS
     constexpr uint8_t OLED_WIDTH = 128;
