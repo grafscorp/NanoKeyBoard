@@ -35,6 +35,7 @@ void ButtonHandler::update()
    
 }
 
-uint8_t ButtonHandler::getButtonsStateData() {
+uint8_t ButtonHandler::getSerialData()
+{
     return buttonData;
 }
