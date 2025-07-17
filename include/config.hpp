@@ -36,8 +36,10 @@ namespace SerialConfig{
 
 namespace ProtocolConfig{
 
+    constexpr uint8_t PACKET_SIZE = 6;
+
     constexpr uint8_t START_BYTE = 0xff;
-    constexpr uint8_t END_BYTE = 0xaa;
+    constexpr uint8_t END_BYTE = 0xfe;
     constexpr uint8_t MAX_PAYLOAD = 64;
     
     enum COMMANDS : uint8_t{
@@ -69,7 +71,7 @@ namespace DisplayConfig{
 0x01-0x40 - command {system, buttons, volume, display}
 0x00-0xff -      payload{type logs, num button, canhed?, ...}
 0x -        CRC
-0xaa -      end byte
+0xFE -      end byte
 
 
 BUTTONS EXAMPLE
@@ -79,7 +81,7 @@ BUTTONS EXAMPLE
 0x01 - buttons
 0x0000_0001 - 0 button
 0xcrc  (0x10, 0x01)
-0xAA -end
+0xFE -end
 
 */ 
 #endif
