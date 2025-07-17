@@ -3,3 +3,14 @@
 SerialProtocol::SerialProtocol() {
     
 }
+
+void SerialProtocol::init()
+{
+    
+}
+
+void SerialProtocol::update()
+{
+
+}
+}
