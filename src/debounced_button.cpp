@@ -1,8 +1,8 @@
 #include "input/debounced_button.hpp"
 
-DebouncedButton::DebouncedButton(const uint8_t pin, const unsigned long debounceDelay) : pin(pin), debounceDelay(debounceDelay)
+DebouncedButton::DebouncedButton(const uint8_t pin, const unsigned long debounceDelay) : debounceDelay(debounceDelay)
 {
-    
+    this->pin = pin;
 }
 
 void DebouncedButton::init(const bool inputPULLUP)
@@ -50,7 +50,7 @@ bool DebouncedButton::isHeld()
 {
     return stableState == LOW;
 }
-bool DebouncedButton::isPressed()
+bool DebouncedButton::isPressed() 
 {
     return this->changed && stableState==LOW;
 }
