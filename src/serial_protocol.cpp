@@ -1,4 +1,4 @@
-#include "serial_protocol.hpp"
+#include "comm/serial_protocol.hpp"
 
 SerialProtocol::SerialProtocol() {
     

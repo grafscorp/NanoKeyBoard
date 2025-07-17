@@ -3,14 +3,15 @@
 
 #include <Arduino.h>
 #include "config.hpp"
-#include "debounced_button.hpp"
+#include "input/debounced_button.hpp"
+#include "interface/I_serial_data_source.hpp"
 
 #define POLLUP_INIT true
 #define WITHOUT_PULLUPINIT false
 
 
-/// @brief 
-class ButtonHandler
+/// @brief Класс для управления нажатием кнопок
+class ButtonHandler : public ISerialDataSource
 {
 public:
     /// @brief 
@@ -25,7 +26,8 @@ public:
     /// @brief 
     void update();
 
-    uint8_t getButtonsStateData();
+    uint8_t getSerialData() override;
+
 
 private:
 /*Данные о кнопках (нажата - 1, не нажата 0)

@@ -1,4 +1,4 @@
-#include "debounced_button.hpp"
+#include "input/debounced_button.hpp"
 
 DebouncedButton::DebouncedButton(const uint8_t pin, const unsigned long debounceDelay) : pin(pin), debounceDelay(debounceDelay)
 {

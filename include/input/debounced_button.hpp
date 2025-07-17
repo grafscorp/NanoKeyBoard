@@ -2,22 +2,22 @@
 #define DEBOUNCED_BUTTON_HPP
 
 #include <Arduino.h>
+#include <input/button.hpp>
 
-class DebouncedButton
+class DebouncedButton : public Button
 {
 public:
     explicit DebouncedButton(const uint8_t pin, const unsigned long debounceDelay = 50);
-    DebouncedButton(){};
+    DebouncedButton() =default;
     void init(const bool = true);
     void init(const uint8_t pin, const unsigned long debounceDelay = 50,const bool = true );
     void update();
 
-    bool isPressed();
-    bool isReleased();
-    bool isHeld();
+    bool isPressed() override;
+    bool isReleased()override;
+    bool isHeld()override;
 
-private:
-    uint8_t pin;
+protected:
     unsigned long lastDebounceTime = 0;
     unsigned long debounceDelay=50;
     bool lastState = HIGH;
