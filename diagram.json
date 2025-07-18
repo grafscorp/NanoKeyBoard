@@ -72,7 +72,8 @@
     [ "btn1:2.r", "nano:4", "green", [ "v105.8", "h278.2" ] ],
     [ "btn2:2.r", "nano:5", "green", [ "v96.2", "h211" ] ],
     [ "btn3:2.r", "nano:6", "green", [ "v86.6", "h143.8" ] ],
-    [ "btn4:2.r", "nano:7", "green", [ "v77", "h76.6" ] ]
+    [ "btn4:2.r", "nano:7", "green", [ "v77", "h76.6" ] ],
+    [ "encoder1:SW", "nano:8", "limegreen", [ "v57.6", "h-211.3" ] ]
   ],
   "dependencies": {}
 }
