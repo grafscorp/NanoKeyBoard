@@ -41,8 +41,8 @@ protected:
   static Encoder* instance;
 
 public:
-  Encoder(uint8_t a, uint8_t b) : 
-    pinA(a), pinB(b), steps(0), lastChange(0), prevState(0), lastISR(0) {}
+  Encoder(const uint8_t pinA, const uint8_t pinB) : 
+    pinA(pinA), pinB(pinB), steps(0), lastChange(0), prevState(0), lastISR(0) {}
   
   void init();
 
