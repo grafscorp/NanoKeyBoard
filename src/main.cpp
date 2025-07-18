@@ -6,33 +6,42 @@
 
 ButtonHandler buttonHandler;
 SerialProtocol serial;
-EncoderButton encoder(8,2, 3);
-// Encoder encoder(EncoderConfig::pinA, EncoderConfig::pinB);
+EncoderButton encoder(8,EncoderConfig::pinA, EncoderConfig::pinB);
+
 void setup() {
+  
     Serial.begin(SerialConfig::SERIAL_BAUD_RATE);
      buttonHandler.init();
      serial.init();
     encoder.init();
+  //pinMode(8, INPUT_PULLUP);
 
 }
 
 void loop() {
-    // buttonHandler.update();
-    // serial.update();
-    // if(buttonHandler.hasChanged())
-    // {
-    //     serial.sendData(buttonHandler);
-    //     buttonHandler.setChanged();
-    // }
-  if (encoder.changed()) {
-    int8_t steps = encoder.getSteps();
-    int8_t dir = encoder.getDirection();
-    
+    buttonHandler.update();
+    serial.update();
+    encoder.update();
+    if(buttonHandler.hasChanged())
+    {
+        serial.sendData(buttonHandler);
+        buttonHandler.setChanged();
+    }
+
+    if(encoder.getButtonStateIsChanged())
+    {
+      Serial.println("Button pressed or released");
+    }
+    if(encoder.getEncoderChanged())
+    {
+      int8_t steps = encoder.getEncoderSteps();
+      int8_t dir = encoder.getEncoderDirection();
     Serial.print("Steps: ");
     Serial.print(steps);
     Serial.print(" | Direction: ");
-    Serial.println(dir == 1 ? "CW" : "CCW");
-  }
+    Serial.println(dir == 1 ? "+" : "-");
+    }
+
     delay(10);
 }
 
