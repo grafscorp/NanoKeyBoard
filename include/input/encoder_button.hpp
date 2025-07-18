@@ -9,11 +9,15 @@ public:
     //EncoderButton() = default;
     void init();
     void update();
-    bool getButtonChanged();
-
+    bool getButtonIsPressed();
+    bool getButtonStateIsChanged();
+    bool getEncoderChanged() ;
+    int8_t getEncoderSteps() ;
+    int8_t getEncoderDirection() ;
 private:
     Encoder encoder;
     DebouncedButton button;
+    bool buttonChanged = false;
 
     
 
