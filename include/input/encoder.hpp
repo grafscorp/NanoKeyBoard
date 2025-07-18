@@ -4,7 +4,7 @@
 #include <Arduino.h>
 
 class Encoder {
-private:
+protected:
   uint8_t pinA, pinB;
   volatile int8_t steps;
   volatile int8_t lastChange;

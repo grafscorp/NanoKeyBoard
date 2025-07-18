@@ -1,12 +1,12 @@
 #include <Arduino.h>
 #include "input/button_handler.hpp"
-#include "input/encoder.hpp"
+#include "input/encoder_button.hpp"
 #include "comm/serial_protocol.hpp"
 // Инициализация статического указателя
 
 ButtonHandler buttonHandler;
 SerialProtocol serial;
-Encoder encoder(2, 3);
+EncoderButton encoder(8,2, 3);
 // Encoder encoder(EncoderConfig::pinA, EncoderConfig::pinB);
 void setup() {
     Serial.begin(SerialConfig::SERIAL_BAUD_RATE);
