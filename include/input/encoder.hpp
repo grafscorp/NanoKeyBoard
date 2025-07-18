@@ -2,35 +2,59 @@
 #define ENCODER_HPP
 
 #include <Arduino.h>
+#include "input/debounced_button.hpp"
 
-class Encoder
-{
+class Encoder {
+private:
+  uint8_t pinA, pinB;
+  volatile int32_t steps;
+  volatile int8_t lastChange;
+  volatile uint8_t prevState;
+  volatile uint32_t lastISR;
+  DebouncedButton button;  
+  // Таблица переходов состояний
+  const int8_t TRANSITIONS[16] = {
+    0,  // 00 -> 00
+    +1, // 00 -> 01
+    -1, // 00 -> 10
+    0,  // 00 -> 11
+    -1, // 01 -> 00
+    0,  // 01 -> 01
+    0,  // 01 -> 10
+    +1, // 01 -> 11
+    +1, // 10 -> 00
+    0,  // 10 -> 01
+    0,  // 10 -> 10
+    -1, // 10 -> 11
+    0,  // 11 -> 00
+    -1, // 11 -> 01
+    +1, // 11 -> 10
+    0   // 11 -> 11
+  };
+
+  // Обработчик прерывания (теперь нестатический)
+  void handleInterrupt();
+  // Статическая обертка для прерывания
+  static void isrWrapperA() { if(instance) instance->handleInterrupt(); }
+  static void isrWrapperB() { if(instance) instance->handleInterrupt(); }
+  
+  // Указатель на экземпляр (для работы с прерываниями)
+  static Encoder* instance;
 
 public:
-    Encoder() = default;
-    explicit  Encoder(const uint8_t pinA, const uint8_t pinB, const uint8_t pulsePerStep = 4  );
-    virtual ~Encoder() = default;
-    bool init();
-    bool init(const uint8_t pinA, const uint8_t pinB, const uint8_t pulsePerStep = 4 );
-    void update();
-    int8_t getDirection() const;
-    int16_t getSteps() const;
-    bool isRotated() const;
-    void resetSteps();
-private:
-    uint8_t pinA ;
-    uint8_t pinB ;
-    uint8_t pulsePerStep=4;
-    
+  Encoder(uint8_t a, uint8_t b) : 
+    pinA(a), pinB(b), steps(0), lastChange(0), prevState(0), lastISR(0) {}
+  
+  void init();
 
-    volatile int8_t lastState =0;
-    volatile int16_t steps = 0;
-    volatile int8_t direction = 0 ;
-    volatile bool rotated = false;
+  // Проверка изменения
+  bool changed();
+  // Получение шагов
+  int32_t getSteps();
 
-    uint8_t readState() const;
+  // Получение направления
+  int8_t getDirection();
 };
-
 
 
 
