@@ -1,24 +1,38 @@
 #include <Arduino.h>
 #include "input/button_handler.hpp"
+#include "input/encoder.hpp"
 #include "comm/serial_protocol.hpp"
+// Инициализация статического указателя
 
 ButtonHandler buttonHandler;
 SerialProtocol serial;
-
+Encoder encoder(2, 3);
+// Encoder encoder(EncoderConfig::pinA, EncoderConfig::pinB);
 void setup() {
     Serial.begin(SerialConfig::SERIAL_BAUD_RATE);
-    buttonHandler.init();
-    serial.init();
+     buttonHandler.init();
+     serial.init();
+    encoder.init();
+
 }
 
 void loop() {
-    buttonHandler.update();
-    serial.update();
-    if(buttonHandler.hasChanged())
-    {
-        serial.sendData(buttonHandler);
-        buttonHandler.setChanged();
-    }
+    // buttonHandler.update();
+    // serial.update();
+    // if(buttonHandler.hasChanged())
+    // {
+    //     serial.sendData(buttonHandler);
+    //     buttonHandler.setChanged();
+    // }
+  if (encoder.changed()) {
+    int8_t steps = encoder.getSteps();
+    int8_t dir = encoder.getDirection();
+    
+    Serial.print("Steps: ");
+    Serial.print(steps);
+    Serial.print(" | Direction: ");
+    Serial.println(dir == 1 ? "CW" : "CCW");
+  }
     delay(10);
 }
 
