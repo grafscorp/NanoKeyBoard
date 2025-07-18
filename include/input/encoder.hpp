@@ -2,16 +2,15 @@
 #define ENCODER_HPP
 
 #include <Arduino.h>
-#include "input/debounced_button.hpp"
 
 class Encoder {
 private:
   uint8_t pinA, pinB;
-  volatile int32_t steps;
+  volatile int8_t steps;
   volatile int8_t lastChange;
   volatile uint8_t prevState;
-  volatile uint32_t lastISR;
-  DebouncedButton button;  
+  volatile uint32_t lastISR;  
+
   // Таблица переходов состояний
   const int8_t TRANSITIONS[16] = {
     0,  // 00 -> 00
@@ -50,7 +49,7 @@ public:
   // Проверка изменения
   bool changed();
   // Получение шагов
-  int32_t getSteps();
+  int8_t getSteps();
 
   // Получение направления
   int8_t getDirection();
