@@ -1,6 +1,7 @@
 #include "input/encoder_button.hpp"
 
 
+
 EncoderButton::EncoderButton(const uint8_t pinButton, const uint8_t pinA, const uint8_t pinB, const unsigned long debounceButtonDelay):encoder(pinA, pinB), button(pinButton, debounceButtonDelay)
 {
  
@@ -43,9 +44,14 @@ int8_t EncoderButton::getEncoderDirection()
 
 const uint8_t EncoderButton::getSerialData() const
 {
+    //TODO
     return 0;
 }
 
+const uint8_t EncoderButton::getSerialCommand() const
+{
+    return ProtocolConfig::CMD_VOLUME;
+}
 void EncoderButton::updateSerialData() {
-    
+    //TODO
 }
