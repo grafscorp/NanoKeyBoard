@@ -2,8 +2,10 @@
 #define ENCODER_BUTTON_HPP
 #include "input/encoder.hpp"
 #include "input/debounced_button.hpp"
+#include "interface/I_serial_data_source.hpp"
+#include "config.hpp"
 
-class EncoderButton : public ISerialDataSource
+ class  EncoderButton final : public ISerialDataSource 
 {
 public:
     explicit EncoderButton(const uint8_t pinButton,const uint8_t pinA=2, const uint8_t pinB=3,const unsigned long debounceButtonDelay = 50 );
