@@ -1,5 +1,6 @@
 #include "input/encoder_button.hpp"
 
+
 EncoderButton::EncoderButton(const uint8_t pinButton, const uint8_t pinA, const uint8_t pinB, const unsigned long debounceButtonDelay):encoder(pinA, pinB), button(pinButton, debounceButtonDelay)
 {
  
@@ -15,7 +16,7 @@ void EncoderButton::update()
 {
     button.update();
     buttonChanged = (button.isPressed() || button.isReleased());
-     
+    
 }
 bool EncoderButton::getButtonIsPressed()
 {
@@ -38,4 +39,13 @@ int8_t EncoderButton::getEncoderSteps()
 int8_t EncoderButton::getEncoderDirection() 
 {
     return encoder.getDirection();
+}
+
+const uint8_t EncoderButton::getSerialData() const
+{
+    return 0;
+}
+
+void EncoderButton::updateSerialData() {
+    
 }
