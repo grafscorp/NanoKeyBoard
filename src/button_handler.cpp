@@ -2,7 +2,6 @@
 
 
 
-
 ButtonHandler::ButtonHandler() {
 
 }
@@ -35,9 +34,10 @@ void ButtonHandler::update()
         {
             isChanged = true;
         }
+        //isChanged = (buttons[i].isPressed() || buttons[i].isReleased());
         
     }
-    if(isChanged) updateData();
+    if(isChanged) updateSerialData();
    
 }
 
@@ -51,6 +51,17 @@ const uint8_t ButtonHandler::getSerialCommand() const
     return ProtocolConfig::CMD_BUTTONS;
 }
 
+void ButtonHandler::updateSerialData() {
+    
+    this->buttonsData = 0U;
+    for (auto& button : buttons)
+    {
+        buttonsData <<= 1U;
+        buttonsData |= ( static_cast<uint8_t>(button.isHeld()) & 1U);
+    }
+
+
+}
 bool ButtonHandler::hasChanged()
 {
     return this->isChanged;
@@ -59,12 +70,4 @@ bool ButtonHandler::hasChanged()
 void ButtonHandler::setChanged(const bool newState) {
     isChanged = newState;
 }
-void ButtonHandler::updateData() {
-    this->buttonsData = 0U;
-    for (auto& button : buttons)
-    {
-        buttonsData <<= 1U;
-        buttonsData |= ( static_cast<uint8_t>(button.isHeld()) & 1U);
-    }
-    
-}
+

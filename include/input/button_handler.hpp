@@ -28,6 +28,7 @@ public:
 
     const uint8_t getSerialData()const  override;
     const uint8_t getSerialCommand() const override;
+    void updateSerialData() override;
     bool hasChanged();
     void setChanged(const bool = false);
 private:
@@ -39,7 +40,6 @@ private:
     DebouncedButton buttons[ButtonsConfig::BUTTONS_COUNT];
 
     bool isChanged = false;
-    void updateData();
 //     
 };
 
