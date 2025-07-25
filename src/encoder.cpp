@@ -52,4 +52,10 @@ int8_t Encoder::getDirection()
     lastChange = 0;
     interrupts();
     return result > 0 ? 1 : (result < 0 ? -1 : 0);
-  }
+  }}
+uint8_t Encoder::getModuleSteps()
+{
+  const int8_t steps = getSteps();
+  return steps<0?steps*-1:steps;
+    
+}

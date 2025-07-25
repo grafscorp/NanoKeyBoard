@@ -37,6 +37,10 @@ int8_t EncoderButton::getEncoderSteps()
     return encoder.getSteps();
 }
 
+uint8_t EncoderButton::getEncoderModuleSteps()
+{
+    return encoder.getModuleSteps();
+}
 int8_t EncoderButton::getEncoderDirection() 
 {
     return encoder.getDirection();

@@ -16,6 +16,7 @@ public:
     bool getButtonStateIsChanged();
     bool getEncoderChanged() ;
     int8_t getEncoderSteps() ;
+    uint8_t getEncoderModuleSteps();
     int8_t getEncoderDirection() ;
     const uint8_t getSerialData() const override;
     const uint8_t getSerialCommand() const override;

@@ -53,6 +53,8 @@ public:
 
   // Получение направления
   int8_t getDirection();
+
+  uint8_t getModuleSteps();
 };
 
 
