@@ -19,6 +19,7 @@ void setup() {
 void loop() {
     buttonHandler.update();
     serial.update();
+    encoder.update();
 
     if(buttonHandler.hasChanged())
     {
