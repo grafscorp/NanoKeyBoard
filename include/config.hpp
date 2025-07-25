@@ -77,7 +77,7 @@ namespace ProtocolConfig{
     0xff        start
     0x02        length
     0x02        buttons
-    0x0000_0001 0 button
+    0b0000_0001 0 button
     0xcrc       (0x10, 0x01)
     0xFE        end
 

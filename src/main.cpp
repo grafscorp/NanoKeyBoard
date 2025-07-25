@@ -3,15 +3,17 @@
 #include "input/encoder_button.hpp"
 #include "comm/serial_protocol.hpp"
 
+#define EncoderButtonPin 8
+
 ButtonHandler buttonHandler;
 SerialProtocol serial;
-EncoderButton encoder(8,EncoderConfig::pinA, EncoderConfig::pinB);
+EncoderButton encoder(EncoderButtonPin,EncoderConfig::pinA, EncoderConfig::pinB);
 
 void setup() {
   
     Serial.begin(SerialConfig::SERIAL_BAUD_RATE);
-     buttonHandler.init();
-     serial.init();
+    buttonHandler.init();
+    serial.init();
     encoder.init();
 
 }
@@ -27,7 +29,8 @@ void loop() {
         buttonHandler.setChanged();
     }
 
-    if(encoder.getEncoderChanged() || encoder.getButtonStateIsChanged())
+
+    if(encoder.hasChanged())
     {
         encoder.updateSerialData();
         serial.sendData(encoder);
