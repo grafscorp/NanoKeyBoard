@@ -48,8 +48,7 @@ int8_t EncoderButton::getEncoderDirection()
 
 const uint8_t EncoderButton::getSerialData() const
 {
-    //TODO
-    return 0;
+    return data;
 }
 
 const uint8_t EncoderButton::getSerialCommand() const
