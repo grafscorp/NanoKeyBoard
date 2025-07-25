@@ -56,5 +56,15 @@ const uint8_t EncoderButton::getSerialCommand() const
     return ProtocolConfig::CMD_VOLUME;
 }
 void EncoderButton::updateSerialData() {
-    //TODO
+    data = 0x00;
+    //0b01 000000
+    if(getButtonIsPressed()) data += 0x40;
+    //0b00 01 00000 - rigth
+    if(getEncoderDirection()<0) data+= 0x20;
+    //0b00 10 0000 - left
+    else if (getEncoderDirection()>0) data +=0x30;
+
+    const uint8_t encoderSteps = encoder.getModuleSteps();
+    data+= encoderSteps>0b1111?0b1111:encoderSteps;
+
 }
