@@ -50,7 +50,7 @@ namespace ProtocolConfig{
         CMD_SYSTEM = 0x01,
         CMD_BUTTONS = 0x02,
         CMD_VOLUME = 0x03, 
-        CMD_DISPLAY = 0x04
+        CMD_DISPLAY = 0x04,
     };
 
     // #pragma pack(1)
@@ -86,9 +86,11 @@ namespace ProtocolConfig{
     0xff -      start
     0x          length
     0x03        volume
-    0x00-0x10-0x20   data (0, -1 ,+1)
+    0b 01 02 0000 data // btn (press , unpress) direction (-1, 0, +1) steps
     0x          crc
     0xfe        end
+
+
 
     */ 
     
