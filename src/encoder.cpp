@@ -1,5 +1,6 @@
  #include "input/encoder.hpp"
 
+
 Encoder* Encoder::instance = nullptr;
 
 void Encoder::handleInterrupt() {
@@ -52,7 +53,7 @@ int8_t Encoder::getDirection()
     lastChange = 0;
     interrupts();
     return result > 0 ? 1 : (result < 0 ? -1 : 0);
-  }}
+}
 uint8_t Encoder::getModuleSteps()
 {
   const int8_t steps = getSteps();
