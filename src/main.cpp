@@ -2,7 +2,6 @@
 #include "input/button_handler.hpp"
 #include "input/encoder_button.hpp"
 #include "comm/serial_protocol.hpp"
-// Инициализация статического указателя
 
 ButtonHandler buttonHandler;
 SerialProtocol serial;
@@ -14,32 +13,23 @@ void setup() {
      buttonHandler.init();
      serial.init();
     encoder.init();
-  //pinMode(8, INPUT_PULLUP);
 
 }
 
 void loop() {
     buttonHandler.update();
     serial.update();
-    encoder.update();
+
     if(buttonHandler.hasChanged())
     {
         serial.sendData(buttonHandler);
         buttonHandler.setChanged();
     }
 
-    if(encoder.getButtonStateIsChanged())
+    if(encoder.getEncoderChanged() || encoder.getButtonStateIsChanged())
     {
-      Serial.println("Button pressed or released");
-    }
-    if(encoder.getEncoderChanged())
-    {
-      int8_t steps = encoder.getEncoderSteps();
-      int8_t dir = encoder.getEncoderDirection();
-    Serial.print("Steps: ");
-    Serial.print(steps);
-    Serial.print(" | Direction: ");
-    Serial.println(dir == 1 ? "+" : "-");
+        encoder.updateSerialData();
+        serial.sendData(encoder);
     }
 
     delay(10);
