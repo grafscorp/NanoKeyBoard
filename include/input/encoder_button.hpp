@@ -21,6 +21,7 @@ public:
     const uint8_t getSerialData() const override;
     const uint8_t getSerialCommand() const override;
     void updateSerialData() override;
+    bool hasChanged();
 private:
     uint8_t data = 0x00;
     Encoder encoder;

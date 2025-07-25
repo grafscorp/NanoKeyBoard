@@ -58,7 +58,9 @@ const uint8_t EncoderButton::getSerialCommand() const
 void EncoderButton::updateSerialData() {
     data = 0x00;
     //0b01 000000
-    if(getButtonIsPressed()) data += 0x40;
+    if(button.isHeld()) data += 0x40;
+    //TODO TEST
+    if(getEncoderDirection()) return;
     //0b00 01 00000 - rigth
     if(getEncoderDirection()<0) data+= 0x20;
     //0b00 10 0000 - left
@@ -67,4 +69,9 @@ void EncoderButton::updateSerialData() {
     const uint8_t encoderSteps = encoder.getModuleSteps();
     data+= encoderSteps>0b1111?0b1111:encoderSteps;
 
+}
+
+bool EncoderButton::hasChanged()
+{
+    return getEncoderChanged() || getButtonStateIsChanged();
 }
