@@ -71,13 +71,21 @@ namespace ProtocolConfig{
     0x -        CRC
     0xFE -      end byte
 
+    SYSTEM EXAMPLE 
+    0xff        start
+    0x03          length
+    0x01        system
+    0b1(always 1)000 0001 (0,0,0, display)
+    crc
+    0xfe
+
 
     BUTTONS EXAMPLE
 
     0xff        start
     0x02        length
     0x02        buttons
-    0b0000_0001 0 button
+    0b1(always 1) 000_0001 first button is
     0xcrc       (0x10, 0x01)
     0xFE        end
 
@@ -86,7 +94,7 @@ namespace ProtocolConfig{
     0xff -      start
     0x          length
     0x03        volume
-    0b 01 02 0000 data // btn (press , unpress) direction (-1, 0, +1) steps
+    0b 01 10 0000 data // btn (press , unpress) direction (0(01), -1(10), +1(11)) steps
     0x          crc
     0xfe        end
 
