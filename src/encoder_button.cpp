@@ -17,6 +17,10 @@ void EncoderButton::update()
 {
     button.update();
     buttonChanged = (button.isPressed() || button.isReleased());
+
+    isChanged = getEncoderChanged() || getButtonStateIsChanged();
+
+    if(isChanged) updateSerialData();
     
 }
 bool EncoderButton::getButtonIsPressed()
@@ -83,7 +87,7 @@ void EncoderButton::updateSerialData() {
 
 }
 
-bool EncoderButton::hasChanged()
+bool EncoderButton::hasChanged() const
 {
-    return getEncoderChanged() || getButtonStateIsChanged();
+    return isChanged;
 }

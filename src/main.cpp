@@ -32,7 +32,7 @@ void loop() {
 
     if(encoder.hasChanged())
     {
-        encoder.updateSerialData();
+//        encoder.updateSerialData();
         serial.sendData(encoder);
     }
 
