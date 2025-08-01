@@ -1,5 +1,30 @@
-// #ifndef DISPLAY_MANAGER_HPP
-// #define DISPLAY_MANAGER_HPP
+#ifndef DISPLAY_MANAGER_HPP
+#define DISPLAY_MANAGER_HPP
+
+#include <Arduino.h>
+#include <Adafruit_SSD1306.h>
+#include "config.hpp"
+
+class DisplayManager final
+{
+public:
+    DisplayManager();
+    enum DisplayState{
+        IDLE,
+        SYSTEM,
+        MEDIA
+    };
+
+    bool init();
+    void update();
+    
+private:
+
+};
+
+
+
+#endif
 
 // #include <Adafruit_SSD1306.h>
 // #include "config.hpp"
