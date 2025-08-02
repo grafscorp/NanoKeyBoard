@@ -2,20 +2,25 @@
 #include "input/button_handler.hpp"
 #include "input/encoder_button.hpp"
 #include "comm/serial_protocol.hpp"
+#include "output/display_manager.hpp"
 
 #define EncoderButtonPin 8
 
 ButtonHandler buttonHandler;
 SerialProtocol serial;
 EncoderButton encoder(EncoderButtonPin,EncoderConfig::pinA, EncoderConfig::pinB);
+DisplayManager display(DisplayConfig::OLED_WIDTH,DisplayConfig::OLED_HEIGHT );
 
 void setup() {
-  
     Serial.begin(SerialConfig::SERIAL_BAUD_RATE);
+    Serial.println("START");
     buttonHandler.init();
     serial.init();
     encoder.init();
-
+    if(!display.init())
+    {
+        Serial.println("ERROR ");
+    }
 }
 
 void loop() {
