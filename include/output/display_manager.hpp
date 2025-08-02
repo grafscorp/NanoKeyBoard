@@ -20,6 +20,7 @@ public:
     bool init(const uint8_t addr = 0x3C);
     void update();
     void drawIDLE();
+    bool hasInit() const;
 private:
     Adafruit_SSD1306 display;
     bool isInit = false;

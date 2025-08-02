@@ -42,3 +42,7 @@ void DisplayManager::drawIDLE()
     display.drawBitmap(0,0,epd_bitmap_untitled,128,64, SSD1306_WHITE);
     display.display();
 }
+bool DisplayManager::hasInit() const
+{
+    return this->isInit;
+}

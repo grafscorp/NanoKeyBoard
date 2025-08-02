@@ -19,7 +19,7 @@ void setup() {
     encoder.init();
     if(!display.init())
     {
-        Serial.println("ERROR ");
+        
     }
 }
 
@@ -28,6 +28,14 @@ void loop() {
     serial.update();
     encoder.update();
 
+
+    if(display.hasInit())
+    {
+        display.update();
+    }
+
+    
+    #pragma region Serial
     if(buttonHandler.hasChanged())
     {
         serial.sendData(buttonHandler);
@@ -40,6 +48,7 @@ void loop() {
 //        encoder.updateSerialData();
         serial.sendData(encoder);
     }
+    #pragma endregion Serial
 
     delay(10);
 }
